@@ -1,15 +1,20 @@
 'use strict';
-var path = require('path');
+const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        index: './app/index.js',
+        404: './app/404.js',
+        console: './app/console.js',
+    },
     output: {
-        publicPath: "http://localhost:8080/dist/",
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        publicPath: "http://localhost:8080/dist",
+        path: path.resolve(__dirname, 'public/dist'),
+        filename: '[name].min.js'
     },
     devServer: {
-        contentBase: './',
+        contentBase: './app',
         inline: true
     },
     module: {
@@ -30,9 +35,23 @@ module.exports = {
                 ]
             },
             {
-                test: /\.svg|\.ttf/,
+                test: /\.svg|\.ttf|\.otf/,
                 use: ['file-loader']
             }
         ]
-    }
+    },
+    plugins: [
+        new CopyPlugin([
+            {
+                context: path.resolve(__dirname, 'app/'),
+                from: path.resolve(__dirname, 'app/console/**/*'),
+                to: path.resolve(__dirname, 'app/dist'),
+            },
+            {
+                context: path.resolve(__dirname, 'app/'),
+                from: path.resolve(__dirname, 'app/*.html'),
+                to: path.resolve(__dirname, 'app/dist'),
+            },
+        ]),
+    ]
 };

@@ -3,4 +3,8 @@
 *.iml
 node_modules/
 dist/
+app/dist/
+public/dist/
 package-lock.json
+framework/node_modules/
+framework/dist/

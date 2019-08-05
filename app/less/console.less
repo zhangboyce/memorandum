@@ -1,0 +1,123 @@
+@import "_variables";
+@import "_base";
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.login {
+  text-align: center;
+  background-color: @dark-blue;
+  background-image:
+          linear-gradient(45deg, rgba(255,255,255,.2) 10%, rgba(255,255,255,.1) 0),
+          linear-gradient(145deg, rgba(255,255,255,.2) 20%, rgba(255,255,255,.1) 0),
+          linear-gradient(245deg, rgba(255,255,255,.2) 30%, rgba(255,255,255,.1) 0),
+          linear-gradient(345deg, rgba(255,255,255,.2) 40%, rgba(255,255,255,.1) 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .title {
+    color: whitesmoke;
+    font-family: 'Noto Sans SC-Bold', sans-serif;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 400px;
+    min-height: 300px;
+    width: 40vw;
+    height: 40vh;
+    background: @yellow;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px -5px rgba(0,0,0,.5);
+
+    form {
+      width: 60%;
+    }
+
+    button {
+      width: 100%;
+      height: 40px;
+      margin-top: 30px;
+      background: fade(@dark-blue, 80%);
+      border: none;
+      color: whitesmoke;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background .2s ease-in;
+      border-radius: 4px;
+
+      &:hover {
+        background: @dark-blue;
+      }
+    }
+
+    input {
+      position: relative;
+      background: none;
+      width: 100%;
+      color: @dark-blue;
+      font-size: 16px;
+      border: none;
+      outline: none;
+      margin: 10px 0;
+      height: 40px;
+      transition: all .2s ease;
+      border-bottom: 1px solid whitesmoke;
+
+      &:focus {
+        border-bottom-color: @dark-blue;
+      }
+
+    }
+  }
+}
+
+@header-height: 3em;
+.header {
+  width: 100%;
+  height: @header-height;
+  background: @yellow;
+}
+
+.main {
+  width: 100%;
+  min-height: calc(100% - @header-height);
+  height: calc(100% - @header-height);
+  background: @grey;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.main .pane {
+  height: 90%;
+  margin: 0 1.5em;
+  background: white;
+  box-shadow: 0 0 10px -5px darken(@grey, 20%);
+  border-radius: .5em;
+  overflow: auto;
+
+  &.editor {
+    min-width: 400px;
+    max-width: 800px;
+    width: 54vw;
+  }
+  &.list {
+    min-width: 300px;
+    max-width: 600px;
+    width: 40vw;
+  }
+}
+
+.main .editor .edit-pane {
+
+}
